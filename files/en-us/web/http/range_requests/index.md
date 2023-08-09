@@ -119,6 +119,7 @@ There are three relevant statuses, when working with range requests:
 - A successful range request elicits a {{HTTPStatus("206")}} `Partial Content` status from the server.
 - A range request that is out of bounds will result in a {{HTTPStatus("416")}} `Requested Range Not Satisfiable` status, meaning that none of the range values overlap the extent of the resource. For example, the first-byte-pos of every range might be greater than the resource length.
 - If range requests are not supported, an {{HTTPStatus("200")}} `OK` status is sent back and the entire response body is transmitted.
+- If negative byte ranges such as `Range: bytes=-4` are not supported, an {{HTTPStatus("501")}} `Not Implemented` may be returned.
 
 ## Comparison to chunked `Transfer-Encoding`
 
